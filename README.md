@@ -12,13 +12,12 @@ at DMST (Department of Management Science and Technology) of Athens University o
 
 1. Clone the repository
 2. Open the project locally
-3. Once you have opened the project run the following command in the terminal:
+3. Add the grades file in the resources directory of the project `gradeshistogram/src/main/resources`
+4. Once you have added the file, run the following command in the terminal:
 
 ```bash
 mvn clean package
 ```
-
-4. Add the grades file in the resources directory of the project `gradeshistogram/src/main/resources`
 
 5. Finally, run the following command in the terminal to run the application:
 
