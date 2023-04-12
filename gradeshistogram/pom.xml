@@ -7,8 +7,11 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>gradeshistogram</artifactId>
-    <name>gradeshistogram</name>
+    <name>GradesHistogram</name>
     <url>https://maven.apache.org</url>
+    <description>
+        This module creates a histogram of grades. The parent of this module is seip2023_practical_assignments.
+    </description>
     <reporting>
         <plugins>
             <plugin>
