@@ -1,7 +1,30 @@
 # seip-lab
 
-This is my personal  repository for the lab assignments of the course "Software Engineering in Practice"
+This is my personal repository for the lab assignments of the course "Software Engineering in Practice"
 at DMST (Department of Management Science and Technology) of Athens University of Economics and Business.
+
+## Prerequisites for running the histogram generator
+
+- Java 8
+- Maven
+
+## Steps to run the histogram generator
+
+1. Clone the repository
+2. Open the project locally
+3. Once you have opened the project run the following command in the terminal:
+
+```bash
+mvn clean package
+```
+
+4. Add the grades file in the resources directory of the project `gradeshistogram/src/main/resources`
+
+5. Finally, run the following command in the terminal to run the application:
+
+```bash
+java -jar gradeshistogram/target/gradeshistogram-1.0-SNAPSHOT-jar-with-dependencies.jar grades.txt
+```
 
 ## Task
 
