@@ -1,11 +1,9 @@
 package gr.aueb.dmst.panagiotis_spanakis;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Objects;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -27,21 +25,19 @@ public class HistogramGenerator {
      *
      * @param file the file to read the grades from.
      * @return an array containing the grades.
-     * @throws RuntimeException if the file cannot be read.
+     * @throws java.lang.RuntimeException if the file cannot be read.
      */
     protected int[] readFile(String file) {
         int lines = 0;
         ArrayList<Integer> temp = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(
-                        Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(file)), StandardCharsets.UTF_8))) {
+                new FileReader(file))) {
             String currentLine = reader.readLine();
             while (currentLine != null) {
                 lines++;
                 temp.add(Integer.parseInt(currentLine));
                 currentLine = reader.readLine();
             }
-
         } catch (IOException e) {
             throw new RuntimeException("Cannot read file " + file);
         }
@@ -53,12 +49,10 @@ public class HistogramGenerator {
 
     }
 
-
     /**
      * <p>This method generates a histogram from the grades.</p>
      *
      * @param dataValues the grades to be visualized.
-     * @return Nothing.
      */
     protected void generateHistogram(int[] dataValues) {
         XYSeriesCollection dataset = new XYSeriesCollection();
