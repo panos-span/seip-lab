@@ -12,7 +12,6 @@ public class Main {
      * <p>This method runs the program.</p>
      *
      * @param args the file to read the grades from.
-     * @return Nothing.
      */
     public static void main(String[] args) {
         try {
@@ -24,8 +23,7 @@ public class Main {
             System.exit(1);
         }
         HistogramGenerator histogramGenerator = new HistogramGenerator();
-        int[] grades = histogramGenerator.readFile(args[0]);
-        histogramGenerator.generateHistogram(grades);
-
+        int[] frequencies = histogramGenerator.readFile(args[0]);
+        histogramGenerator.generateHistogram(frequencies);
     }
 }

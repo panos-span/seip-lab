@@ -29,6 +29,7 @@ public class HistogramGenerator {
      */
     protected int[] readFile(String file) {
         int lines = 0;
+        int max = -1;
         ArrayList<Integer> temp = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(
                 new FileReader(file))) {
@@ -36,16 +37,21 @@ public class HistogramGenerator {
             while (currentLine != null) {
                 lines++;
                 temp.add(Integer.parseInt(currentLine));
+                // Get the maximum grade
+                if (Integer.parseInt(currentLine) > max) {
+                    max = Integer.parseInt(currentLine);
+                }
                 currentLine = reader.readLine();
             }
         } catch (IOException e) {
             throw new RuntimeException("Cannot read file " + file);
         }
-        int[] grades = new int[lines];
+        // Initialize the array with the size of the ranges of the grades
+        int[] frequencies = new int[max + 1];
         for (int i = 0; i < lines; i++) {
-            grades[i] = temp.get(i);
+            frequencies[temp.get(i)]++;
         }
-        return grades;
+        return frequencies;
 
     }
 
@@ -78,7 +84,7 @@ public class HistogramGenerator {
         boolean urls = false; // do not visualize urls
 
         // Declare and initialize a createXYLineChart JFreeChart
-        JFreeChart chart = ChartFactory.createXYLineChart("Grades", "Students", "Grades", dataset,
+        JFreeChart chart = ChartFactory.createXYLineChart("Grades Histogram", "Grades", "Frequency", dataset,
                 PlotOrientation.VERTICAL, legend, tooltips, urls);
 
         /*
