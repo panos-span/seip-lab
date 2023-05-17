@@ -5,7 +5,7 @@ at DMST (Department of Management Science and Technology) of Athens University o
 
 ![Build Status](https://github.com/panos-span/seip-lab/actions/workflows/maven.yml/badge.svg)
 
-[![codecov](https://codecov.io/gh/panos-span/seip-lab/branch/main/graph/badge.svg?token=ZE1ZNCLNO8)](https://codecov.io/gh/panos-span/seip-lab)
+[![codecov](https://codecov.io/gh/panos-span/seip-lab/branch/development/graph/badge.svg?token=ZE1ZNCLNO8)](https://codecov.io/gh/panos-span/seip-lab)
 
 ## Structure of the repository
 
