@@ -30,11 +30,12 @@ public class ArrayOperationsTest {
         int[] grades = {2, 3, 4, 5, 6};
 
         when(fileIO_mock.readFile(filepath)).thenReturn(grades);
-        when(myMath_mock.isPrime(1)).thenThrow(IllegalArgumentException.class);
         when(myMath_mock.isPrime(2)).thenReturn(true);
         when(myMath_mock.isPrime(3)).thenReturn(true);
         when(myMath_mock.isPrime(4)).thenReturn(false);
         when(myMath_mock.isPrime(5)).thenReturn(true);
+        when(myMath_mock.isPrime(6)).thenReturn(false);
+
         int[] expected = {2, 3, 5};
 
         Assert.assertArrayEquals(expected, arrayOperations.findPrimesInFile(fileIO_mock, filepath, myMath_mock));

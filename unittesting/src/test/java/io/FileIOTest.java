@@ -52,6 +52,10 @@ public class FileIOTest {
         Assert.assertArrayEquals(expected, actual);
     }
 
+    /**
+     * Test case for the {@link io.FileIO#readFile(String)} method.
+     * Verifies that the method correctly reads and returns an array of integers from a file.
+     */
     @Test
     public void testReadFileContainsInvalidEntries() {
         int[] expected = {1, 2, 3, 4, 5, 6};
