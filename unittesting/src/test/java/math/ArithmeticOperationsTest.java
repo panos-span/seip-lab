@@ -104,6 +104,36 @@ public class ArithmeticOperationsTest {
 
     /**
      * Test case for the {@link math.ArithmeticOperations#multiply(int, int)} method.
+     * Verifies that the method works correctly when multiplying by the minimum integer value.
+     */
+    @Test
+    public void testMultiplyWithXZero() {
+        int result = arithmeticOperations.multiply(0, 1);
+        Assert.assertEquals(0, result);
+    }
+
+    /**
+     * Test case for the {@link math.ArithmeticOperations#multiply(int, int)} method.
+     * Verifies that the method works correctly when multiplying by the minimum integer value.
+     */
+    @Test
+    public void testMultiplyWithYZero() {
+        int result = arithmeticOperations.multiply(1, 0);
+        Assert.assertEquals(0, result);
+    }
+
+    /**
+     * Test case for the {@link math.ArithmeticOperations#multiply(int, int)} method.
+     * Verifies that the method works correctly when multiplying by the minimum integer value.
+     */
+    @Test
+    public void testMultiplyWithXAndYZero() {
+        int result = arithmeticOperations.multiply(0, 0);
+        Assert.assertEquals(0, result);
+    }
+
+    /**
+     * Test case for the {@link math.ArithmeticOperations#multiply(int, int)} method.
      * Verifies that an {@link java.lang.IllegalArgumentException} is thrown when the multiplication result overflows.
      */
     @Test
