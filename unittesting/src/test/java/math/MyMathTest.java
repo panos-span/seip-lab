@@ -69,5 +69,14 @@ public class MyMathTest {
         myMath.isPrime(1);
     }
 
+    /**
+     * Test case for the {@link math.MyMath#isPrime(int)} method.
+     * Verifies that the method correctly identifies 2 (a border case number) as a prime.
+     */
+    @Test
+    public void testPrimeIs2() {
+        Assert.assertTrue(myMath.isPrime(2));
+    }
+
 
 }
