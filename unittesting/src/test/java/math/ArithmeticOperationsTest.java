@@ -143,5 +143,15 @@ public class ArithmeticOperationsTest {
         arithmeticOperations.multiply(Integer.MAX_VALUE, 2);
     }
 
+    /**
+     * Test case for the {@link math.ArithmeticOperations#divide(double, double)} method.
+     * Verifies the correct division result when given numerator zero.
+     */
+    @Test
+    public void testDivideNumeratorZero() {
+        double result = arithmeticOperations.divide(0, 2);
+        Assert.assertEquals(0, result, 0);
+    }
+
 
 }
