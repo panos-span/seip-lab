@@ -13,6 +13,8 @@
         The project is part of the SEIP course of the Department of Management Science and Technology
         of the Athens University of Economics and Business.
         The module gradeshistogram is the main module of the project.
+        The module unittesting is a module purpose of which is to get familiar with unit testing and
+        continuous integration.
     </description>
 
     <properties>
@@ -31,21 +33,35 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.3</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.jfree/jfreechart -->
-    </dependencies>
 
     <modules>
         <module>gradeshistogram</module>
+        <module>unittesting</module>
     </modules>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.5.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
