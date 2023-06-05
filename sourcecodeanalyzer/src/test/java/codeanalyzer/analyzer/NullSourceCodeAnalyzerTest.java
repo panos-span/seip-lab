@@ -1,4 +1,4 @@
-package codeanalyzer;
+package codeanalyzer.analyzer;
 
 import java.io.IOException;
 import org.junit.Assert;

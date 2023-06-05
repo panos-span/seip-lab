@@ -1,4 +1,4 @@
-package codeanalyzer;
+package codeanalyzer.filereader;
 
 import java.util.List;
 

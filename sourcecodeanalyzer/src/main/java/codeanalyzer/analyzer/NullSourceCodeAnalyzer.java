@@ -1,4 +1,4 @@
-package codeanalyzer;
+package codeanalyzer.analyzer;
 
 /**
  * The NullSourceCodeAnalyzer class is a placeholder class that represents a null implementation of the SourceCodeAnalyzer class.

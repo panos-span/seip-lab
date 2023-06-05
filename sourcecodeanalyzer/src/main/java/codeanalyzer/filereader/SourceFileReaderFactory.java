@@ -1,4 +1,4 @@
-package codeanalyzer;
+package codeanalyzer.filereader;
 
 /**
  * The SourceFileReaderFactory class is responsible for creating instances of SourceFileReader based on the specified file reader type.

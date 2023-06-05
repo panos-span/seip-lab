@@ -1,5 +1,7 @@
-package codeanalyzer;
+package codeanalyzer.analyzer;
 
+import codeanalyzer.filereader.LocalFileReader;
+import codeanalyzer.filereader.WebFileReader;
 import org.junit.Assert;
 import org.junit.Test;
 

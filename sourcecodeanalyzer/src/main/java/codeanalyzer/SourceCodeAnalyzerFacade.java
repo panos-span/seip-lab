@@ -1,5 +1,11 @@
 package codeanalyzer;
 
+import codeanalyzer.analyzer.SourceCodeAnalyzer;
+import codeanalyzer.analyzer.SourceCodeAnalyzerFactory;
+import codeanalyzer.filereader.SourceFileReader;
+import codeanalyzer.filereader.SourceFileReaderFactory;
+import codeanalyzer.metricsexporter.MetricsExporter;
+import codeanalyzer.metricsexporter.MetricsExporterFactory;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;

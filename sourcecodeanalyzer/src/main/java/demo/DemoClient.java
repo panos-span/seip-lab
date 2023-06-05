@@ -27,6 +27,18 @@ import java.io.IOException;
  */
 public class DemoClient {
 
+    private final SourceCodeAnalyzerFacade analyzerFacade;
+
+    /**
+     * Constructs a DemoClient with the provided SourceCodeAnalyzerFacade.
+     *
+     * @param facade the SourceCodeAnalyzerFacade to be used by the DemoClient
+     */
+    public DemoClient(SourceCodeAnalyzerFacade facade) {
+        this.analyzerFacade = facade;
+    }
+
+
     /**
      * Runs the demo and exports metrics for a given source code file.
      *
@@ -34,6 +46,17 @@ public class DemoClient {
      * @throws IOException if an I/O error occurs while exporting the metrics
      */
     public static void main(String[] args) throws IOException {
+        new DemoClient(new SourceCodeAnalyzerFacade()).run(args);
+
+    }
+
+    /**
+     * This method encapsulates the main logic of the DemoClient class. It analyzes the given source code file and exports the metrics.
+     *
+     * @param args an array of command-line arguments
+     * @throws IOException if an I/O error occurs while exporting the metrics
+     */
+    public void run(String[] args) throws IOException {
         String filepath = "src/main/resources/TestClass.java";
         String sourceCodeAnalyzerType = "regex";
         String sourceFileLocation = "local";
@@ -51,7 +74,6 @@ public class DemoClient {
             System.exit(1);
         }
 
-        SourceCodeAnalyzerFacade analyzerFacade = new SourceCodeAnalyzerFacade();
         analyzerFacade.exportMetrics(filepath, sourceCodeAnalyzerType, sourceFileLocation, outputFilePath, outputFileType);
     }
 }

@@ -1,5 +1,6 @@
-package codeanalyzer;
+package codeanalyzer.analyzer;
 
+import codeanalyzer.filereader.SourceFileReader;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,7 +17,7 @@ public class RegexAnalyzer extends SourceCodeAnalyzer {
     /**
      * <p>Constructor for RegexAnalyzer.</p>
      *
-     * @param fileReader a {@link codeanalyzer.SourceFileReader} object
+     * @param fileReader a {@link SourceFileReader} object
      */
     public RegexAnalyzer(SourceFileReader fileReader) {
         super(fileReader);

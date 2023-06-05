@@ -1,5 +1,6 @@
-package codeanalyzer;
+package codeanalyzer.analyzer;
 
+import codeanalyzer.filereader.LocalFileReader;
 import java.io.IOException;
 import org.junit.Test;
 

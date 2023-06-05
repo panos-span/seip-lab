@@ -1,13 +1,10 @@
-package codeanalyzer;
-
-import static org.mockito.Mockito.doCallRealMethod;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+package codeanalyzer.metricsexporter;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import org.junit.Test;
+
+import static org.mockito.Mockito.*;
 
 public class JsonExporterTest {
 

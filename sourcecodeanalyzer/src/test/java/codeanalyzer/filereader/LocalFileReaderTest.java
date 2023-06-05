@@ -1,4 +1,4 @@
-package codeanalyzer;
+package codeanalyzer.filereader;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,13 +11,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class WebFileReaderTest {
+public class LocalFileReaderTest {
 
-    private SourceFileReader sfr = null;
+    SourceFileReader sfr = null;
     private static List<String> expectedList;
     private static String expectedString;
     private final static String TEST_CLASS_LOCAL = "src/test/resources/TestClass.java";
-    private final static String TEST_CLASS_WEB ="https://drive.google.com/uc?export=download&id=1z51FZXqPyun4oeB7ERFlOgfcoDfLLLhg";
 
     @BeforeClass
     public static void setUp() throws IOException {
@@ -26,10 +25,10 @@ public class WebFileReaderTest {
     }
 
     @Test
-    public void testReadFileIntoListWeb() throws IOException {
-        //read a file stored in the web into a List
-        sfr = new WebFileReader();
-        List<String> actualList = sfr.readFileIntoList(TEST_CLASS_WEB);
+    public void testReadFileIntoListLocal() throws IOException {
+        //read a locally stored file into a List
+        sfr = new LocalFileReader();
+        List<String> actualList = sfr.readFileIntoList(TEST_CLASS_LOCAL);
 
         String[] expecteds = expectedList.stream().toArray(String[]::new);
         String[] actuals = actualList.stream().toArray(String[]::new);
@@ -38,14 +37,12 @@ public class WebFileReaderTest {
     }
 
     @Test
-    public void testReadFileIntoStringWeb() throws IOException {
-        //read a file stored in the web into a String
-        sfr = new WebFileReader();
-        String actuals = sfr.readFileIntoString(TEST_CLASS_WEB);
+    public void testReadFileIntoStringLocal() throws IOException {
+        //read a locally stored file into a String
+        sfr = new LocalFileReader();
+        String actuals = sfr.readFileIntoString(TEST_CLASS_LOCAL);
 
         assertEquals(expectedString, actuals);
     }
-
-
 
 }

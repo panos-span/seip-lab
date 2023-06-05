@@ -1,5 +1,6 @@
-package codeanalyzer;
+package codeanalyzer.analyzer;
 
+import codeanalyzer.filereader.SourceFileReader;
 import java.io.IOException;
 
 /**

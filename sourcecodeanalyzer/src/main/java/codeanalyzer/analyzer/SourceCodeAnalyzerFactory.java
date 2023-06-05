@@ -1,4 +1,6 @@
-package codeanalyzer;
+package codeanalyzer.analyzer;
+
+import codeanalyzer.filereader.SourceFileReader;
 
 /**
  * The SourceCodeAnalyzerFactory class is responsible for creating instances of SourceCodeAnalyzer based on the specified analyzer type.

@@ -1,4 +1,4 @@
-package codeanalyzer;
+package codeanalyzer.metricsexporter;
 
 /**
  * The MetricsExporterFactory class is responsible for creating instances of MetricsExporter based on the specified file type.

@@ -1,4 +1,4 @@
-package codeanalyzer;
+package codeanalyzer.metricsexporter;
 
 import java.io.File;
 import java.util.HashMap;
