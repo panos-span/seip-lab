@@ -37,3 +37,26 @@ jobs:
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
+
+  after_success:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: End-to-end run of the sourcecodeanalyzer module
+        run: java -jar sourcecodeanalyzer/target/sourcecodeanalyzer-0.0.1-SNAPSHOT-jar-with-dependencies.jar sourcecodeanalyzer/src/test/resources/TestClass.java regex local output_metrics_file csv
+
+      #- name: Compare metrics
+      #  run: diff output_metrics_file.csv metrics_results.csv
+
+  verify:
+    needs: after_success
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compare metrics
+        run: diff output_metrics_file.csv metrics_results.csv
