@@ -43,7 +43,7 @@ The project is structured as follows:
 
 The class diagram of the final version of the system is displayed below:
 
-![Class Diagram](src/main/resources/UML.png)
+![Class Diagram](src/main/resources/UML.jpg)
 
 ---
 
