@@ -43,7 +43,15 @@ The project is structured as follows:
 
 The class diagram of the final version of the system is displayed below:
 
-![Class Diagram](src/main/resources/UML.jpg)
+![Class Diagram](UML.png)
+
+Here is the UMl class diagram in PlantUML format that shows the structure of the packages as well:
+
+![Class Diagram](uml_with_packages.png)
+
+For the implementation of this UML class diagram, plantuml was used.
+The source code of the UML class diagram is
+available in the `uml.puml` file.
 
 ---
 
@@ -162,6 +170,27 @@ or errors.
 - **Complexity**: Can make code more complex than necessary if the product types are not likely to change or the
   creation process is straightforward.
 - **Hidden Errors**: Errors can get masked and become harder to debug since the system behaves as though nothing wrong has happened.
+- **Class Proliferation**: The pattern can lead to an increase in the number of classes, making the code harder to
+  follow.
+
+## Bridge Pattern
+
+The `SourceCodeAnalyzer` interface and its implementations `RegexAnalyzer` and `StrcompAnalyzer` use the Bridge design
+pattern with the SourceFileReader interface and its implementations `LocalFileReader` and `WebFileReader`.
+This pattern decouples an abstraction from its implementation so that the two can vary independently.
+It is useful when both the abstractions and their implementations need to be extended independently.
+
+Also, the classes DemoClient and SourceCodeAnalyzerFacade use the Bridge design pattern.
+
+#### Pros:
+
+- **Decoupling**: Decouples an abstraction from its implementation so that the two can vary independently.
+- **Open for Extension**: Allows the addition of new abstractions and implementations without modifying existing code.
+
+#### Cons:
+
+- **Complexity**: Can make code more complex than necessary if the product types are not likely to change or the
+  creation process is straightforward.
 - **Class Proliferation**: The pattern can lead to an increase in the number of classes, making the code harder to
   follow.
 
