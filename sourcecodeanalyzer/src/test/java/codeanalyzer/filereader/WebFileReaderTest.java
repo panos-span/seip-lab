@@ -17,7 +17,7 @@ public class WebFileReaderTest {
     private static List<String> expectedList;
     private static String expectedString;
     private final static String TEST_CLASS_LOCAL = "src/test/resources/TestClass.java";
-    private final static String TEST_CLASS_WEB ="https://drive.google.com/uc?export=download&id=1z51FZXqPyun4oeB7ERFlOgfcoDfLLLhg";
+    private final static String TEST_CLASS_WEB = "https://drive.google.com/uc?export=download&id=1z51FZXqPyun4oeB7ERFlOgfcoDfLLLhg";
 
     @BeforeClass
     public static void setUp() throws IOException {
@@ -45,7 +45,6 @@ public class WebFileReaderTest {
 
         assertEquals(expectedString, actuals);
     }
-
 
 
 }

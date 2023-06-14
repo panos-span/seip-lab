@@ -66,11 +66,15 @@ There are three primary dimensions in the system :
 3. **metrics exporter type**
 
 For the redesign of the system based on the **SOLID** principles, the following design patterns are used:
-- **Facade Pattern**: The `SourceCodeAnalyzerFacade` class is an example of the Facade design pattern.
-- **Factory Pattern**: The `SourceFileReaderFactory`, `SourceCodeAnalyzerFactory`, and `MetricsExporterFactory` classes implement the Factory design pattern.
-- **Strategy Pattern**: The classes `SourceFileReader`, `SourceCodeAnalyzer`, and `MetricsExporter` represent the Strategy pattern.
-- **Null Object Pattern**: The `NullMetricsExporter` class and the `NullSourceCodeAnalyzer` class use the Null Object design pattern.
 
+- **Facade Pattern**: The `SourceCodeAnalyzerFacade` class is an example of the Facade design pattern.
+- **Factory Pattern**: The `SourceFileReaderFactory`, `SourceCodeAnalyzerFactory`, and `MetricsExporterFactory` classes
+  implement the Factory design pattern.
+- **Strategy Pattern**: The classes `SourceFileReader`, `SourceCodeAnalyzer`, and `MetricsExporter` represent the
+  Strategy pattern.
+- **Null Object Pattern**: The `NullMetricsExporter` class and the `NullSourceCodeAnalyzer` class use the Null Object
+  design pattern.
+- **Bridge Pattern**: The `SourceCodeAnalyzer` interface and the `DemoClient` interface use the Bridge design pattern.
 
 ## Design Patterns Used
 
@@ -129,7 +133,7 @@ parameter provided to the factory method.
 ### Strategy Pattern
 
 The classes `SourceFileReader`, `SourceCodeAnalyzer`, and `MetricsExporter` and their implementations
-such as `LocalFileReader` and `WebFileReader` for the `SourceFileReader`, `RegexAnalyzer` 
+such as `LocalFileReader` and `WebFileReader` for the `SourceFileReader`, `RegexAnalyzer`
 and `StrcompAnalyzer` for the `SourceCodeAnalyzer` and `CsvExporter` and `JsonExporter` for the `MetricsExporter`
 represent the Strategy pattern.
 This pattern
@@ -137,7 +141,6 @@ enables an algorithm's behavior to be selected at runtime.
 With this pattern, the algorithm can vary independently
 of the clients that use it.
 This way, the system can be extended with new algorithms without modifying existing code.
-
 
 The `SourceFileReader` class has different implementations to read files from different locations (local, web, etc.).
 The `SourceCodeAnalyzer` class has different implementations to analyze source code based on different strategies (
@@ -169,7 +172,8 @@ or errors.
 
 - **Complexity**: Can make code more complex than necessary if the product types are not likely to change or the
   creation process is straightforward.
-- **Hidden Errors**: Errors can get masked and become harder to debug since the system behaves as though nothing wrong has happened.
+- **Hidden Errors**: Errors can get masked and become harder to debug since the system behaves as though nothing wrong
+  has happened.
 - **Class Proliferation**: The pattern can lead to an increase in the number of classes, making the code harder to
   follow.
 
