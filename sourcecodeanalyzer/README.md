@@ -74,7 +74,8 @@ For the redesign of the system based on the **SOLID** principles, the following 
   Strategy pattern.
 - **Null Object Pattern**: The `NullMetricsExporter` class and the `NullSourceCodeAnalyzer` class use the Null Object
   design pattern.
-- **Bridge Pattern**: The `SourceCodeAnalyzer` interface and the `DemoClient` interface use the Bridge design pattern.
+- **Bridge Pattern**: The `SourceCodeAnalyzer` abstraction and the `SourceFileReader` interface utilize the Bridge design
+  pattern.
 
 ## Design Patterns Used
 
@@ -177,19 +178,21 @@ or errors.
 - **Class Proliferation**: The pattern can lead to an increase in the number of classes, making the code harder to
   follow.
 
-## Bridge Pattern
+### Bridge Pattern
 
-The `SourceCodeAnalyzer` interface and its implementations `RegexAnalyzer` and `StrcompAnalyzer` use the Bridge design
-pattern with the SourceFileReader interface and its implementations `LocalFileReader` and `WebFileReader`.
+The `SourceCodeAnalyzer` abstraction and its implementations `RegexAnalyzer` and `StrcompAnalyzer` use the Bridge design
+pattern with the `SourceFileReader` interface and its implementations `LocalFileReader` and `WebFileReader`.
+More specifically, `SourceFileReader` is the implementor interface, `LocalFileReader` and `WebFileReader` are its
+concrete
+implementations and
+`SourceCodeAnalyzer` is the abstraction, and `RegexAnalyzer` and `StrcompAnalyzer` are the refined abstractions.
 This pattern decouples an abstraction from its implementation so that the two can vary independently.
 It is useful when both the abstractions and their implementations need to be extended independently.
-
-Also, the classes DemoClient and SourceCodeAnalyzerFacade use the Bridge design pattern.
 
 #### Pros:
 
 - **Decoupling**: Decouples an abstraction from its implementation so that the two can vary independently.
-- **Open for Extension**: Allows the addition of new abstractions and implementations without modifying existing code.
+- **Simplifies the Interface**: Simplifies the interface by hiding the implementation details from the client.
 
 #### Cons:
 
