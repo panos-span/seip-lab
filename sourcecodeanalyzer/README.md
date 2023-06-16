@@ -72,9 +72,11 @@ For the redesign of the system based on the **SOLID** principles, the following 
   implement the Factory design pattern.
 - **Strategy Pattern**: The classes `SourceFileReader`, `SourceCodeAnalyzer`, and `MetricsExporter` represent the
   Strategy pattern.
-- **Null Object Pattern**: The `NullMetricsExporter` class and the `NullSourceCodeAnalyzer` class use the Null Object
+- **Null Object Pattern**: The `NullMetricsExporter` class , `NullMetricsExporter` class and
+  the `NullSourceCodeAnalyzer` class use the Null Object
   design pattern.
-- **Bridge Pattern**: The `SourceCodeAnalyzer` abstraction and the `SourceFileReader` interface utilize the Bridge design
+- **Bridge Pattern**: The `SourceCodeAnalyzer` abstraction and the `SourceFileReader` interface utilize the Bridge
+  design
   pattern.
 
 ## Design Patterns Used
@@ -156,7 +158,8 @@ formats (csv, json, etc.).
 
 ### Null Object Pattern
 
-The `NullMetricsExporter` class and the `NullSourceCodeAnalyzer` class use the Null Object design pattern.
+The `NullMetricsExporter` class, `NullFileReader` class and the `NullSourceCodeAnalyzer` class use the Null Object
+design pattern.
 This pattern provides an
 object that acts as a surrogate for a lack of an object of a given type.
 This object behaves as a real object but does

@@ -23,12 +23,14 @@ import java.util.Map;
  * <ul>
  * <li>CsvMetricsExporter</li>
  * <li>JsonMetricsExporter</li>
+ * <li>NullMetricsExporter</li>
  * </ul>
  *
  * @author Panagiotis Spanakis
  * @version 1.0
  * @see CsvMetricsExporter
  * @see JsonMetricsExporter
+ * @see NullMetricsExporter
  */
 public interface MetricsExporter {
 

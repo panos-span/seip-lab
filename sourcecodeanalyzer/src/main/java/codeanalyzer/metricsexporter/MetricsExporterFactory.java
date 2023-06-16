@@ -25,6 +25,7 @@ package codeanalyzer.metricsexporter;
  * @version 1.0
  * @see CsvMetricsExporter
  * @see JsonMetricsExporter
+ * @see NullMetricsExporter
  */
 public class MetricsExporterFactory {
 
@@ -33,7 +34,6 @@ public class MetricsExporterFactory {
      *
      * @param fileType the file type for which a MetricsExporter instance will be created
      * @return a MetricsExporter instance for the specified file type
-     * @throws IllegalArgumentException if the specified file type is unknown or unsupported
      */
     public MetricsExporter createMetricsExporter(String fileType) {
         MetricsExporter metricsExporter;
@@ -42,7 +42,7 @@ public class MetricsExporterFactory {
         } else if (fileType.equals("json")) {
             metricsExporter = new JsonMetricsExporter();
         } else {
-            throw new IllegalArgumentException("Unknown export type: " + fileType);
+            metricsExporter = new NullMetricsExporter();
         }
         return metricsExporter;
     }

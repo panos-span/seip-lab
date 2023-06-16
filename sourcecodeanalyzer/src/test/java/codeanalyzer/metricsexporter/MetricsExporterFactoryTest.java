@@ -20,8 +20,10 @@ public class MetricsExporterFactoryTest {
     }
 
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testWriteFileWithUnknownFileType() {
-        mex.createMetricsExporter("unknown");
+    @Test
+    public void testCreateMetricsExporterNull() {
+        MetricsExporter metricsExporter = mex.createMetricsExporter("null");
+        Assert.assertTrue(metricsExporter instanceof NullMetricsExporter);
     }
+
 }
