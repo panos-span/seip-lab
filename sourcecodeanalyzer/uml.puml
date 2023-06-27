@@ -1,0 +1,105 @@
+@startuml
+
+package codeanalyzer.filereader {
+  interface SourceFileReader {
+    + readFileIntoList(filepath: String): List<String>
+    + readFileIntoString(filepath: String): String
+  }
+
+  class LocalFileReader {
+  }
+
+  class WebFileReader {
+  }
+
+  class NullFileReader {
+  }
+
+  SourceFileReader <|-[dashed]-  LocalFileReader
+  SourceFileReader <|-[dashed]-  WebFileReader
+  SourceFileReader <|-[dashed]-  NullFileReader
+}
+
+package codeanalyzer.analyzer {
+  abstract class SourceCodeAnalyzer {
+    - fileReader: codeanalyzer.filereader.SourceFileReader
+    + calculateLOC(filepath: String): int
+    + calculateNOM(filepath: String): int
+    + calculateNOC(filepath: String): int
+  }
+
+  class RegexAnalyzer {
+  }
+
+  class StrcompAnalyzer {
+  }
+
+  class NullSourceCodeAnalyzer {
+    - error_value: int = -1
+  }
+
+  SourceCodeAnalyzer <|--  RegexAnalyzer
+  SourceCodeAnalyzer <|--  StrcompAnalyzer
+  SourceCodeAnalyzer <|--  NullSourceCodeAnalyzer
+}
+
+package codeanalyzer.metricsexporter {
+  interface MetricsExporter {
+    + writeFile(metrics: Map<String, Integer>, filepath: String)
+  }
+
+  class CsvMetricsExporter {
+  }
+
+  class JsonMetricsExporter {
+  }
+
+  MetricsExporter <|-[dashed]- CsvMetricsExporter
+  MetricsExporter <|-[dashed]- JsonMetricsExporter
+}
+
+package codeanalyzer.filereader {
+  class SourceFileReaderFactory {
+    + createSourceFileReader(fileReaderType: String): codeanalyzer.filereader.SourceFileReader
+  }
+}
+
+package codeanalyzer.metricsexporter {
+  class MetricsExporterFactory {
+    + createMetricsExporter(fileType: String): codeanalyzer.metricsexporter.MetricsExporter
+  }
+}
+
+package codeanalyzer.analyzer {
+  class SourceCodeAnalyzerFactory {
+    + createSourceCodeAnalyzer(fileReader: codeanalyzer.filereader.SourceFileReader, analyzerType: String): codeanalyzer.analyzer.SourceCodeAnalyzer
+  }
+
+  class SourceCodeAnalyzerFacade {
+    + exportMetrics(filepath: String, sourceCodeAnalyzerType: String, sourceFileLocation: String, outputFilePath: String, outputFileType: String)
+  }
+}
+
+package demo {
+  class DemoClient {
+    - analyzerFacade: codeanalyzer.analyzer.SourceCodeAnalyzerFacade
+    + main(args: String[]): void
+    + run(args: String[]): void
+  }
+}
+
+codeanalyzer.analyzer.SourceCodeAnalyzerFacade -[dashed]-> codeanalyzer.analyzer.SourceCodeAnalyzer : creates
+codeanalyzer.analyzer.SourceCodeAnalyzerFacade -[dashed]-> codeanalyzer.metricsexporter.MetricsExporter : creates
+codeanalyzer.analyzer.SourceCodeAnalyzerFacade -[dashed]-> codeanalyzer.filereader.SourceFileReader : creates
+
+demo.DemoClient --* codeanalyzer.analyzer.SourceCodeAnalyzerFacade : uses
+
+codeanalyzer.metricsexporter.MetricsExporterFactory -[dashed]-> codeanalyzer.metricsexporter.MetricsExporter : creates
+
+codeanalyzer.filereader.SourceFileReaderFactory -[dashed]-> codeanalyzer.filereader.SourceFileReader : creates
+
+codeanalyzer.analyzer.SourceCodeAnalyzerFactory -[dashed]-> codeanalyzer.analyzer.SourceCodeAnalyzer : creates
+
+codeanalyzer.analyzer.SourceCodeAnalyzer --* codeanalyzer.filereader.SourceFileReader : uses
+
+@enduml

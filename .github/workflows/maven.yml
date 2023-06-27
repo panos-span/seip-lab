@@ -30,10 +30,47 @@ jobs:
       - name: Build with Maven
         run: mvn -B package jacoco:report --file pom.xml
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          name: sourcecodeanalyzer
+          path: sourcecodeanalyzer/target/sourcecodeanalyzer-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
+  after_success:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download sourcecodeanalyzer jar
+        uses: actions/download-artifact@v3
+        with:
+          name: sourcecodeanalyzer
+          path: sourcecodeanalyzer/target/
+
+      - name: End-to-end run of the sourcecodeanalyzer module
+        run: java -jar sourcecodeanalyzer/target/sourcecodeanalyzer-0.0.1-SNAPSHOT-jar-with-dependencies.jar sourcecodeanalyzer/src/test/resources/TestClass.java regex local output_metrics_file csv
+
+      - name: Upload metrics file
+        uses: actions/upload-artifact@v3
+        with:
+          name: output_metrics_file
+          path: output_metrics_file.csv
+
+
+  verify:
+    needs: after_success
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download metrics file
+        uses: actions/download-artifact@v3
+        with:
+          name: output_metrics_file
+
+
+      - name: Compare metrics
+        run: diff output_metrics_file.csv metrics_results.csv

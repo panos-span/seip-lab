@@ -13,6 +13,7 @@ The repository is structured in the following way:
 
 - [Grades Histogram](gradeshistogram): Contains the code for the Maven assignment
 - [Unit testing](unittesting): Contains the code for the UnitTesting assignment
+- [Source Code Analyzer](sourcecodeanalyzer): Contains the code for the SourceCodeAnalyzer assignment
 
 ## Prerequisites for running the histogram generator
 
